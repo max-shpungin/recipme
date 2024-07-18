@@ -25,6 +25,7 @@ function RecipeList() {
       try {
         const response = await axios.get(RECIPE_ENDPOINT);
         setRecipes(response.data);
+        console.log("Recipes have been fetched.:", response.data);
       } catch (error) {
         setError(error);
         console.log("Error: The recipes have exploaded on fetch.", error);
