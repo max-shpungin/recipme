@@ -10,6 +10,8 @@ import {
 import RecipeList from "./components/RecipeList";
 import RecipeDetail from "./components/RecipeDetail";
 
+export const RECIPE_ENDPOINT = "http://localhost:8000/api/recipes";
+
 function App() {
 
   return (
