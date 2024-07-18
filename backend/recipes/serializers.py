@@ -15,3 +15,4 @@ class RecipeSerializer(serializers.ModelSerializer):
             'category',
             'created_at',
         ]
+        read_only_fields = ['id', 'created_at', 'author']

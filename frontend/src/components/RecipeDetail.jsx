@@ -23,7 +23,7 @@ function RecipeDetail() {
   useEffect(() => {
     async function getRecipe() {
       try {
-        const response = axios.get(`${RECIPE_ENDPOINT}/${id}`);
+        const response = await axios.get(`${RECIPE_ENDPOINT}/${id}`);
         setRecipe(response.data);
       } catch (error) {
         setError(error);
@@ -38,6 +38,7 @@ function RecipeDetail() {
 
   if (error) {
     console.log("Error: Something went wrong: ", error.message);
+    return <p>Something went wrong: {error.message}</p>;
   }
   if (isLoading) {
     return <p>Loading...</p>;

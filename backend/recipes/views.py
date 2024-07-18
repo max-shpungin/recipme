@@ -1,13 +1,14 @@
-from rest_framework import generics
+from rest_framework import viewsets, permissions
 from .models import Recipe
 from .serializers import RecipeSerializer
 from django.shortcuts import render
 
 # Create your views here.
-class RecipeList(generics.ListCreateAPIView):
+class RecipeViewSet(viewsets.ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-class RecipeDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Recipe.objects.all()
-    serializer_class = RecipeSerializer
+    # The author will be the currently logged in user
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
