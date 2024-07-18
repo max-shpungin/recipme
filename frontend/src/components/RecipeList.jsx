@@ -3,7 +3,7 @@ import axios from "axios";
 
 import RecipeCard from "./RecipeCard";
 
-import { RECIPE_ENDPOINT } from "../App";
+import { RECIPE_ENDPOINT } from "../constants";
 
 /**
  * List of all the recipes

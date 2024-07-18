@@ -1,8 +1,9 @@
-import useParams from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
 import axios from "axios";
 
-import { RECIPE_ENDPOINT } from "../App";
+import { RECIPE_ENDPOINT } from "../constants";
 
 
 /**
@@ -24,7 +25,6 @@ function RecipeDetail() {
       try {
         const response = axios.get(`${RECIPE_ENDPOINT}/${id}`);
         setRecipe(response.data);
-
       } catch (error) {
         setError(error);
         console.log("Error: The recipe has exploaded on fetch.", error);
@@ -39,7 +39,9 @@ function RecipeDetail() {
   if (error) {
     console.log("Error: Something went wrong: ", error.message);
   }
-  if (isLoading){return <p>Loading...</p>}
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="RecipeDetail">
@@ -50,7 +52,7 @@ function RecipeDetail() {
           <p>{recipe.ingredients}</p>
           <p>{recipe.instructions}</p>
         </>
-       }
+      }
     </div>
   );
 }
