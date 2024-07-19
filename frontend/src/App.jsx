@@ -1,6 +1,6 @@
 import "./App.css";
 import {
-  BrowserRouter as Router,
+  BrowserRouter,
   Routes,
   Route,
 } from "react-router-dom";
@@ -11,12 +11,12 @@ import RecipeDetail from "./components/RecipeDetail";
 function App() {
 
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<RecipeList />} />
         <Route path="/recipes/:id" element={<RecipeDetail />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
